@@ -19,13 +19,62 @@ header, .card, footer {
 }
  * { box-sizing: border-box; }
 
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: url("https://images.unsplash.com/photo-1568605114967-8130f3a36994") no-repeat center center fixed;
-      background-size: cover;
-      color: #fff;
-    }
+    body {<body>
+  <div style="
+    position: fixed;
+    inset: 0;
+    background-image: url('https://images.unsplash.com/photo-1568605114967-8130f3a36994');
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  "></div>
+
+  <div style="
+    position: relative;
+    z-index: 10;
+    min-height: 100vh;
+    background: rgba(0,0,0,0.85);
+    padding: 24px;
+    color: white;
+  ">
+
+    <h1 style="text-align:center; margin-top:40px;">
+      River Song Management LLC
+    </h1>
+    <p style="text-align:center; margin-bottom:40px;">
+      Property Maintenance Services Only
+    </p>
+
+    <div style="background:white;color:black;padding:20px;border-radius:12px;max-width:700px;margin:20px auto;">
+      <h2>Company Role</h2>
+      <p>
+        River Song Management LLC provides <strong>property maintenance services only</strong>.<br><br>
+        <strong>Nomad</strong> is the property management company and handles leasing, rent, and tenants.
+      </p>
+    </div>
+
+    <div style="background:white;color:black;padding:20px;border-radius:12px;max-width:700px;margin:20px auto;">
+      <h2>Properties Serviced</h2>
+      <ul>
+        <li>511 Caddis Creek Rd, Irmo, SC</li>
+        <li>1604 Hollingshed Rd, Irmo, SC</li>
+      </ul>
+    </div>
+
+    <div style="background:white;color:black;padding:20px;border-radius:12px;max-width:700px;margin:20px auto;">
+      <h2>Maintenance Requests</h2>
+      <p>Email: riversongmanagement@gmail.com</p>
+      <p>Phone: (803) 814-5061</p>
+    </div>
+
+    <div style="text-align:center; margin-top:40px; font-size:0.85rem;">
+      © River Song Management LLC — Maintenance Services Only
+    </div>
+
+  </div>
+</body>
+
+   }
 
     .overlay {
       background: rgba(0,0,0,0.75);
