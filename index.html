@@ -5,99 +5,88 @@
   <title>River Song Management LLC</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="description" content="River Song Management LLC provides property maintenance services only. Property management is handled by Nomad.">
-
   <style>
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
+      background-color: #111;
+      color: #111;
     }
 
-    .bg {
-      position: fixed;
-      inset: 0;
+    .hero {
       background-image: url("https://images.unsplash.com/photo-1568605114967-8130f3a36994");
       background-size: cover;
       background-position: center;
-      z-index: -1;
-    }
-
-    .overlay {
-      min-height: 100vh;
-      background: rgba(0,0,0,0.85);
-      padding: 24px;
+      padding: 60px 20px;
+      text-align: center;
       color: white;
     }
 
-    h1 {
-      text-align: center;
-      margin-top: 40px;
-      margin-bottom: 8px;
+    .hero h1 {
+      margin: 0;
       font-size: 2.2rem;
     }
 
-    .subtitle {
-      text-align: center;
-      margin-bottom: 40px;
-      opacity: 0.9;
+    .hero p {
+      margin-top: 8px;
+      font-size: 1rem;
+    }
+
+    .container {
+      background: #f4f4f4;
+      padding: 30px 20px;
     }
 
     .card {
       background: white;
-      color: black;
-      padding: 20px;
-      border-radius: 12px;
-      max-width: 720px;
+      max-width: 700px;
       margin: 20px auto;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
 
-    .card h2 {
+    h2 {
       margin-top: 0;
     }
 
-    .button {
-      display: block;
-      text-align: center;
+    a.button {
+      display: inline-block;
       background: #2563eb;
       color: white;
-      padding: 14px;
-      border-radius: 8px;
+      padding: 12px 18px;
+      border-radius: 6px;
       text-decoration: none;
       font-weight: bold;
-      margin-top: 12px;
+      margin-top: 10px;
     }
 
     footer {
       text-align: center;
-      margin-top: 40px;
+      padding: 20px;
+      background: #222;
+      color: #ccc;
       font-size: 0.85rem;
-      opacity: 0.85;
-    }
-
-    @media (max-width: 600px) {
-      h1 {
-        font-size: 1.8rem;
-      }
     }
   </style>
 </head>
 
 <body>
 
-  <div class="bg"></div>
-
-  <div class="overlay">
-
+  <div class="hero">
     <h1>River Song Management LLC</h1>
-    <div class="subtitle">Property Maintenance Services Only</div>
+    <p>Property Maintenance Services Only</p>
+  </div>
+
+  <div class="container">
 
     <div class="card">
       <h2>Company Role</h2>
       <p>
         River Song Management LLC provides <strong>property maintenance services only</strong>.
-        <br><br>
-        <strong>Nomad</strong> is the property management company and handles leasing, rent, and tenant relations.
+      </p>
+      <p>
+        <strong>Nomad</strong> is the property management company responsible for leasing, rent, and tenants.
       </p>
     </div>
 
@@ -122,19 +111,18 @@
     <div class="card">
       <h2>Property Management</h2>
       <p>
-        For leasing, rent, or tenant services, please contact Nomad.
+        For leasing or tenant services, please contact Nomad.
       </p>
-
       <a class="button" href="https://www.nomadlease.com" target="_blank">
         Visit Nomad
       </a>
     </div>
 
-    <footer>
-      © River Song Management LLC — Maintenance Services Only
-    </footer>
-
   </div>
+
+  <footer>
+    © River Song Management LLC — Maintenance Services Only
+  </footer>
 
 </body>
 </html>
