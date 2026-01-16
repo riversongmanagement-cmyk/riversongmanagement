@@ -13,6 +13,7 @@
   --primary:#2563eb;
   --dark:#020617;
   --light:#f8fafc;
+  --border:#e5e7eb;
 }
 
 *{box-sizing:border-box}
@@ -84,11 +85,57 @@ section.active{display:block}
   background:white;
   max-width:1000px;
   margin:30px auto;
-  padding:30px;
-  border-radius:16px;
-  box-shadow:0 25px 45px rgba(0,0,0,.18);
+  padding:35px;
+  border-radius:18px;
+  box-shadow:0 30px 60px rgba(0,0,0,.18);
 }
 .card h2{margin-top:0}
+
+/* FORM */
+.form-group{
+  margin-top:18px;
+}
+
+label{
+  font-weight:600;
+  display:block;
+  margin-bottom:6px;
+  color:#1f2937;
+}
+
+input, textarea{
+  width:100%;
+  padding:14px 16px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  font-size:1rem;
+  background:#f9fafb;
+  transition:all .2s ease;
+  box-shadow:0 4px 10px rgba(0,0,0,.05);
+}
+
+input:focus, textarea:focus{
+  outline:none;
+  background:white;
+  border-color:var(--primary);
+  box-shadow:0 0 0 4px rgba(37,99,235,.15);
+}
+
+textarea{resize:vertical}
+
+/* BUTTON */
+button{
+  background:linear-gradient(135deg,#2563eb,#1d4ed8);
+  color:white;
+  border:none;
+  padding:14px 26px;
+  border-radius:12px;
+  font-size:1rem;
+  margin-top:22px;
+  cursor:pointer;
+  box-shadow:0 10px 25px rgba(37,99,235,.4);
+}
+button:hover{transform:translateY(-1px)}
 
 /* GRID */
 .grid{
@@ -97,34 +144,12 @@ section.active{display:block}
   gap:30px;
 }
 
-/* FORM */
-label{font-weight:600}
-input,textarea{
-  width:100%;
-  padding:12px;
-  margin-top:6px;
-  border-radius:8px;
-  border:1px solid #ccc;
-  font-size:1rem;
-}
-button{
-  background:var(--primary);
-  color:white;
-  border:none;
-  padding:14px 22px;
-  border-radius:8px;
-  font-size:1rem;
-  margin-top:14px;
-  cursor:pointer;
-}
-button:hover{background:#1d4ed8}
-
 /* IFRAME */
 iframe{
   width:100%;
   height:420px;
   border:0;
-  border-radius:14px;
+  border-radius:16px;
 }
 
 /* FOOTER */
@@ -168,7 +193,7 @@ function showPage(id){
   <div class="card">
     <h2>Who We Are</h2>
     <p><strong>River Song Management LLC</strong> provides property maintenance services only.</p>
-    <p><strong>Nomad</strong> is the licensed property management company responsible for leasing, rent collection, tenant placement, and compliance.</p>
+    <p><strong>Nomad</strong> is the licensed property management company responsible for leasing and tenant relations.</p>
   </div>
 </section>
 
@@ -178,16 +203,22 @@ function showPage(id){
     <p>For maintenance issues only. Leasing or rent questions must be directed to Nomad.</p>
 
     <form action="mailto:riversongmanagement@gmail.com" method="post" enctype="text/plain">
-      <label>Name</label>
-      <input name="Name" required>
+      <div class="form-group">
+        <label>Name</label>
+        <input name="Name" placeholder="Your full name" required>
+      </div>
 
-      <label>Property Address</label>
-      <input name="Property" required>
+      <div class="form-group">
+        <label>Property Address</label>
+        <input name="Property" placeholder="e.g. 511 Caddis Creek Rd" required>
+      </div>
 
-      <label>Description of Issue</label>
-      <textarea name="Issue" rows="5" required></textarea>
+      <div class="form-group">
+        <label>Description of Issue</label>
+        <textarea name="Issue" rows="5" placeholder="Please describe the issue in detail" required></textarea>
+      </div>
 
-      <button type="submit">Submit Request</button>
+      <button type="submit">Submit Maintenance Request</button>
     </form>
   </div>
 </section>
@@ -212,9 +243,6 @@ function showPage(id){
   <div class="card">
     <h2>Live Local Weather – Irmo, SC</h2>
     <iframe src="https://forecast.weather.gov/MapClick.php?lat=34.086&lon=-81.183&FcstType=graphical"></iframe>
-    <p style="font-size:.85rem;color:#555;margin-top:10px">
-      Powered by the National Weather Service (NOAA)
-    </p>
   </div>
 </section>
 
@@ -239,7 +267,6 @@ function showPage(id){
 © River Song Management LLC — Property Maintenance Services Only
 </footer>
 
-<!-- FREE LIVE CHAT -->
 <script src="https://embed.tawk.to/64f8e2d4b2d3b12b5b8d78f1/1h9jv9m5n" async></script>
 
 </body>
