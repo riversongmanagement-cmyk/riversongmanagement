@@ -2,21 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>River Song Management LLC | Maintenance Services</title>
+<title>River Song Management LLC</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 :root{
-  --bg:#ffffff;
-  --card:#ffffff;
-  --text:#0f172a;
-  --accent:#2563eb;
-}
-
-body.dark{
   --bg:#0b1220;
   --card:#111827;
   --text:#e5e7eb;
+  --muted:#9ca3af;
+  --accent:#2563eb;
 }
 
 *{box-sizing:border-box}
@@ -30,35 +25,82 @@ body{
 }
 
 .overlay{
-  background:rgba(255,255,255,.80);
+  background:rgba(5,10,20,.85);
   min-height:100vh;
 }
-body.dark .overlay{background:rgba(5,10,20,.75)}
 
+/* HEADER */
 header{
-  padding:60px 20px 30px;
+  padding:20px;
   text-align:center;
 }
 
-header h1{margin:0;font-size:2.6rem}
-header p{max-width:900px;margin:14px auto;font-size:1.05rem}
-
-.toggle{
-  position:fixed;
-  top:18px;
-  right:18px;
-  background:var(--card);
-  border-radius:999px;
-  padding:8px 14px;
-  cursor:pointer;
-  box-shadow:0 6px 18px rgba(0,0,0,.2);
+.top-bar{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  align-items:center;
+  gap:18px;
+  margin-bottom:16px;
 }
 
+.time{
+  font-size:1.1rem;
+  font-weight:600;
+}
+
+.weather img{
+  height:48px;
+  border-radius:10px;
+}
+
+header h1{
+  margin:10px 0 6px;
+  font-size:2.4rem;
+}
+
+header p{
+  margin:0;
+  color:var(--muted);
+}
+
+/* SECTIONS */
 .section{
   max-width:1100px;
   margin:40px auto;
   padding:0 20px;
 }
+
+/* TABS */
+.tabs{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  margin-bottom:26px;
+}
+
+.tab{
+  padding:10px 20px;
+  border-radius:999px;
+  background:#1f2937;
+  cursor:pointer;
+  font-weight:600;
+}
+
+.tab.active{
+  background:var(--accent);
+}
+
+/* CARDS */
+.card{
+  background:var(--card);
+  border-radius:22px;
+  padding:28px;
+  box-shadow:0 18px 40px rgba(0,0,0,.5);
+  display:none;
+}
+
+.card.active{display:block}
 
 .grid{
   display:grid;
@@ -66,36 +108,21 @@ header p{max-width:900px;margin:14px auto;font-size:1.05rem}
   gap:28px;
 }
 
-.card{
-  background:var(--card);
-  border-radius:22px;
-  padding:28px;
-  box-shadow:0 18px 40px rgba(0,0,0,.12);
-}
-
-.badge{
-  background:#e0e7ff;
-  color:#1e40af;
-  padding:6px 14px;
-  border-radius:999px;
-  font-size:.8rem;
-  display:inline-block;
-  margin-bottom:10px;
-}
-
-/* Carousel */
+/* CAROUSEL */
 .carousel{
-  position:relative;
-  height:340px;
-  overflow:hidden;
+  height:320px;
   border-radius:18px;
-  background:#f8fafc;
-  border:1px solid #e2e8f0;
+  background:#020617;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border:1px solid #1f2937;
 }
 
 .carousel img{
-  width:100%;
-  height:100%;
+  max-width:100%;
+  max-height:100%;
   object-fit:contain;
   display:none;
 }
@@ -112,21 +139,24 @@ header p{max-width:900px;margin:14px auto;font-size:1.05rem}
 .dot{
   width:10px;
   height:10px;
-  background:#cbd5e1;
   border-radius:50%;
+  background:#374151;
   cursor:pointer;
 }
 
-.dot.active{background:#2563eb}
+.dot.active{background:var(--accent)}
 
-form label{font-weight:600;display:block;margin-bottom:6px}
+label{font-weight:600}
 input,textarea,select{
   width:100%;
   padding:14px;
   border-radius:14px;
-  border:1px solid #cbd5f5;
+  border:1px solid #374151;
+  background:#020617;
+  color:var(--text);
   margin-bottom:16px;
 }
+
 button{
   width:100%;
   padding:16px;
@@ -140,14 +170,15 @@ button{
 
 iframe{
   width:100%;
-  height:320px;
-  border:0;
+  height:300px;
   border-radius:18px;
+  border:0;
 }
 
 footer{
   text-align:center;
   margin:60px 0 30px;
+  color:var(--muted);
   font-size:.9rem;
 }
 </style>
@@ -156,52 +187,72 @@ footer{
 <body>
 <div class="overlay">
 
-<div class="toggle" onclick="toggleDark()">🌙</div>
-
 <header>
-<h1>River Song Management LLC</h1>
-<p><strong>Maintenance Services Only.</strong> Leasing and tenant relations handled exclusively by <strong>Nomad</strong>.</p>
+  <div class="top-bar">
+    <div class="time" id="time"></div>
+    <div class="weather">
+      <img src="https://wttr.in/Irmo,SC?format=3" alt="Irmo SC Weather">
+    </div>
+  </div>
+
+  <h1>River Song Management LLC</h1>
+  <p>Maintenance Services Only · Property Management by Nomad</p>
 </header>
 
 <section class="section">
-<div class="grid">
-<div class="card">
-<span class="badge">Maintenance Provider</span>
-<p>
-📧 riversongmanagement@gmail.com<br>
-📞 (803) 814-5061
-</p>
+
+<div class="tabs">
+  <div class="tab active" onclick="showTab('maintenance')">Maintenance Provider</div>
+  <div class="tab" onclick="showTab('manager')">Property Manager</div>
 </div>
-<div class="card">
-<span class="badge">Property Manager</span>
-<p>Nomad handles leasing, rent, and tenant communication.</p>
-<a href="https://nomadlease.com" target="_blank">Visit Nomad →</a>
+
+<!-- MAINTENANCE TAB -->
+<div class="card active" id="maintenance">
+  <h3>River Song Management LLC</h3>
+  <p>
+    Provides property maintenance and repair coordination only.
+    No rent collection, leasing, or tenant administration.
+  </p>
+  <p>
+    📧 riversongmanagement@gmail.com<br>
+    📞 (803) 814-5061
+  </p>
 </div>
+
+<!-- PROPERTY MANAGER TAB -->
+<div class="card" id="manager">
+  <h3>Nomad</h3>
+  <p>
+    Nomad is the exclusive property management company responsible for
+    leasing, rent collection, and tenant relations.
+  </p>
+  <a href="https://nomadlease.com" target="_blank">Visit Nomad →</a>
 </div>
+
 </section>
 
 <section class="section">
 <h2>Serviced Properties</h2>
 
-<div class="card">
-<div class="carousel" id="carousel">
-<img src="511-caddis-creek.jpg" class="active">
-<img src="1604-hollingshed-rd.jpg">
-</div>
+<div class="card active">
+  <div class="carousel">
+    <img src="511-caddis-creek.jpg" class="active">
+    <img src="1604-hollingshed-rd.jpg">
+  </div>
 
-<div class="dots">
-<div class="dot active" onclick="show(0)"></div>
-<div class="dot" onclick="show(1)"></div>
-</div>
+  <div class="dots">
+    <div class="dot active" onclick="showImg(0)"></div>
+    <div class="dot" onclick="showImg(1)"></div>
+  </div>
 
-<h3>511 Caddis Creek Rd & 1604 Hollingshed Rd</h3>
-<p>Irmo, South Carolina</p>
+  <p>511 Caddis Creek Rd & 1604 Hollingshed Rd · Irmo, SC</p>
 </div>
 </section>
 
 <section class="section">
 <h2>Maintenance Request</h2>
-<div class="card">
+
+<div class="card active">
 <form action="https://formsubmit.co/riversongmanagement@gmail.com" method="POST" enctype="multipart/form-data">
 <input type="hidden" name="_captcha" value="false">
 
@@ -218,7 +269,7 @@ footer{
 <textarea name="Issue" rows="5" required></textarea>
 
 <input type="file" name="attachment">
-<button type="submit">Submit Request</button>
+<button type="submit">Submit Maintenance Request</button>
 </form>
 </div>
 </section>
@@ -235,16 +286,32 @@ footer{
 </div>
 
 <script>
+/* Time + Date */
+function updateTime(){
+  const d=new Date();
+  document.getElementById('time').textContent =
+    d.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric'}) +
+    " · " +
+    d.toLocaleTimeString();
+}
+setInterval(updateTime,1000);
+updateTime();
+
+/* Tabs */
+function showTab(id){
+  document.querySelectorAll('.card').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+/* Carousel */
 let imgs=document.querySelectorAll('.carousel img');
 let dots=document.querySelectorAll('.dot');
-function show(i){
- imgs.forEach((img,n)=>{img.classList.toggle('active',n===i);dots[n].classList.toggle('active',n===i);});
+function showImg(i){
+  imgs.forEach((img,n)=>img.classList.toggle('active',n===i));
+  dots.forEach((d,n)=>d.classList.toggle('active',n===i));
 }
-function toggleDark(){
- document.body.classList.toggle('dark');
- localStorage.setItem('dark',document.body.classList.contains('dark'));
-}
-if(localStorage.getItem('dark')==='true')document.body.classList.add('dark');
 </script>
 
 </body>
