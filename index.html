@@ -80,7 +80,7 @@ header p{
 }
 
 .tab{
-  padding:10px 20px;
+  padding:10px 22px;
   border-radius:999px;
   background:#1f2937;
   cursor:pointer;
@@ -110,7 +110,7 @@ header p{
 
 /* CAROUSEL */
 .carousel{
-  height:320px;
+  height:340px;
   border-radius:18px;
   background:#020617;
   display:flex;
@@ -132,8 +132,8 @@ header p{
 .dots{
   display:flex;
   justify-content:center;
-  gap:8px;
-  margin-top:10px;
+  gap:10px;
+  margin-top:12px;
 }
 
 .dot{
@@ -147,6 +147,7 @@ header p{
 .dot.active{background:var(--accent)}
 
 label{font-weight:600}
+
 input,textarea,select{
   width:100%;
   padding:14px;
@@ -202,16 +203,16 @@ footer{
 <section class="section">
 
 <div class="tabs">
-  <div class="tab active" onclick="showTab('maintenance')">Maintenance Provider</div>
-  <div class="tab" onclick="showTab('manager')">Property Manager</div>
+  <div class="tab active" onclick="showTab('maintenance', this)">Maintenance Provider</div>
+  <div class="tab" onclick="showTab('manager', this)">Property Manager</div>
 </div>
 
-<!-- MAINTENANCE TAB -->
 <div class="card active" id="maintenance">
   <h3>River Song Management LLC</h3>
   <p>
     Provides property maintenance and repair coordination only.
-    No rent collection, leasing, or tenant administration.
+    River Song Management LLC does not collect rent, manage leases,
+    or act as landlord.
   </p>
   <p>
     📧 riversongmanagement@gmail.com<br>
@@ -219,7 +220,6 @@ footer{
   </p>
 </div>
 
-<!-- PROPERTY MANAGER TAB -->
 <div class="card" id="manager">
   <h3>Nomad</h3>
   <p>
@@ -235,17 +235,21 @@ footer{
 <h2>Serviced Properties</h2>
 
 <div class="card active">
+
   <div class="carousel">
-    <img src="511-caddis-creek.jpg" class="active">
-    <img src="1604-hollingshed-rd.jpg">
+    <img src="511-caddis-creek.jpg" class="active" alt="511 Caddis Creek Rd">
+    <img src="511-caddis-creek-2.jpg" alt="511 Caddis Creek Rd - Photo 2">
+    <img src="1604-hollingshed-rd.jpg" alt="1604 Hollingshed Rd">
   </div>
 
   <div class="dots">
     <div class="dot active" onclick="showImg(0)"></div>
     <div class="dot" onclick="showImg(1)"></div>
+    <div class="dot" onclick="showImg(2)"></div>
   </div>
 
   <p>511 Caddis Creek Rd & 1604 Hollingshed Rd · Irmo, SC</p>
+
 </div>
 </section>
 
@@ -286,23 +290,22 @@ footer{
 </div>
 
 <script>
-/* Time + Date */
+/* Time & Date */
 function updateTime(){
   const d=new Date();
   document.getElementById('time').textContent =
-    d.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric'}) +
-    " · " +
-    d.toLocaleTimeString();
+    d.toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric',year:'numeric'})
+    + " · " + d.toLocaleTimeString();
 }
 setInterval(updateTime,1000);
 updateTime();
 
 /* Tabs */
-function showTab(id){
+function showTab(id, el){
   document.querySelectorAll('.card').forEach(c=>c.classList.remove('active'));
   document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  event.target.classList.add('active');
+  el.classList.add('active');
 }
 
 /* Carousel */
