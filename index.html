@@ -5,198 +5,242 @@
 <title>River Song Management LLC | Property Maintenance</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- SEO -->
-<meta name="description" content="River Song Management LLC provides maintenance services for properties managed by Nomad in Irmo, South Carolina.">
-<meta name="keywords" content="property maintenance Irmo SC, River Song Management LLC, Nomad property management">
+<meta name="description" content="River Song Management LLC provides professional property maintenance services for homes managed by Nomad in Irmo, South Carolina.">
 <meta name="author" content="River Song Management LLC">
 
-<!-- PWA -->
-<meta name="theme-color" content="#2563eb">
-<link rel="manifest" href="data:application/json,{
-  &quot;name&quot;:&quot;River Song Management&quot;,
-  &quot;short_name&quot;:&quot;River Song&quot;,
-  &quot;start_url&quot;:&quot;.&quot;,
-  &quot;display&quot;:&quot;standalone&quot;,
-  &quot;background_color&quot;:&quot;#ffffff&quot;,
-  &quot;theme_color&quot;:&quot;#2563eb&quot;
-}">
-
 <style>
-body {
-  margin:0;
-  font-family: Arial, Helvetica, sans-serif;
-  background:#111;
+:root{
+  --primary:#2563eb;
+  --dark:#020617;
+  --light:#f8fafc;
 }
 
-.hero {
-  background-image:url("https://images.unsplash.com/photo-1568605114967-8130f3a36994");
-  background-size:cover;
-  background-position:center;
-  color:white;
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:var(--dark);
+  color:#0f172a;
+}
+
+/* HERO */
+.hero{
+  background:url("https://images.unsplash.com/photo-1568605114967-8130f3a36994") center/cover no-repeat;
+  min-height:70vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   text-align:center;
-  padding:80px 20px;
+  position:relative;
+  color:white;
 }
-
-.hero h1 {
-  margin:0;
-  font-size:2.4rem;
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:rgba(2,6,23,.65);
 }
-
-.hero p {
-  margin-top:10px;
-  opacity:0.95;
+.hero-content{
+  position:relative;
+  z-index:1;
+  max-width:800px;
+  padding:20px;
 }
+.hero h1{font-size:3rem;margin:0}
+.hero p{font-size:1.1rem;margin-top:12px;opacity:.95}
 
-.container {
-  background:#f4f4f4;
-  padding:30px 15px;
+/* NAV */
+nav{
+  position:sticky;
+  top:0;
+  background:#020617;
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  z-index:10;
+  box-shadow:0 6px 25px rgba(0,0,0,.4);
 }
+nav a{
+  color:white;
+  padding:14px 20px;
+  text-decoration:none;
+  font-weight:600;
+  cursor:pointer;
+}
+nav a:hover{background:#1e293b}
 
-.card {
+/* SECTIONS */
+section{
+  display:none;
+  padding:60px 15px;
+  background:var(--light);
+  min-height:70vh;
+}
+section.active{display:block}
+
+/* CARDS */
+.card{
   background:white;
-  max-width:850px;
-  margin:25px auto;
-  padding:25px;
-  border-radius:10px;
-  box-shadow:0 8px 20px rgba(0,0,0,.2);
+  max-width:1000px;
+  margin:30px auto;
+  padding:30px;
+  border-radius:16px;
+  box-shadow:0 25px 45px rgba(0,0,0,.18);
+}
+.card h2{margin-top:0}
+
+/* GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
 }
 
-h2 {
-  margin-top:0;
-}
-
-label {
-  display:block;
-  margin-top:12px;
-  font-weight:bold;
-}
-
-input, textarea {
+/* FORM */
+label{font-weight:600}
+input,textarea{
   width:100%;
-  padding:10px;
-  margin-top:5px;
-  border-radius:6px;
+  padding:12px;
+  margin-top:6px;
+  border-radius:8px;
   border:1px solid #ccc;
   font-size:1rem;
 }
-
-button {
-  margin-top:15px;
-  background:#2563eb;
+button{
+  background:var(--primary);
   color:white;
   border:none;
-  padding:12px 18px;
+  padding:14px 22px;
+  border-radius:8px;
   font-size:1rem;
-  border-radius:6px;
+  margin-top:14px;
   cursor:pointer;
 }
+button:hover{background:#1d4ed8}
 
-button:hover {
-  background:#1e4fd8;
-}
-
-iframe {
+/* IFRAME */
+iframe{
   width:100%;
-  height:300px;
+  height:420px;
   border:0;
-  border-radius:8px;
+  border-radius:14px;
 }
 
-.note {
-  font-size:.85rem;
-  color:#555;
-  margin-top:10px;
-}
-
-footer {
-  background:#222;
-  color:#ccc;
+/* FOOTER */
+footer{
+  background:#020617;
+  color:#94a3b8;
   text-align:center;
-  padding:25px;
-  font-size:.85rem;
+  padding:30px;
+  font-size:.9rem;
 }
 </style>
+
+<script>
+function showPage(id){
+  document.querySelectorAll("section").forEach(s=>s.classList.remove("active"));
+  document.getElementById(id).classList.add("active");
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+</script>
 </head>
 
-<body>
+<body onload="showPage('home')">
 
 <div class="hero">
-  <h1>River Song Management LLC</h1>
-  <p>Property Maintenance Services Only</p>
+  <div class="hero-content">
+    <h1>River Song Management LLC</h1>
+    <p>Professional Property Maintenance Services</p>
+  </div>
 </div>
 
-<div class="container">
+<nav>
+  <a onclick="showPage('home')">Home</a>
+  <a onclick="showPage('maintenance')">Maintenance</a>
+  <a onclick="showPage('properties')">Properties</a>
+  <a onclick="showPage('weather')">Weather</a>
+  <a onclick="showPage('support')">Support</a>
+  <a onclick="showPage('contact')">Contact</a>
+</nav>
 
-<div class="card">
-<h2>Company Role & Legal Separation</h2>
-<p><strong>River Song Management LLC</strong> provides property maintenance services only.</p>
-<p><strong>Nomad</strong> is the licensed property management company responsible for leasing, rent collection, tenant placement, and legal compliance.</p>
-</div>
+<section id="home" class="active">
+  <div class="card">
+    <h2>Who We Are</h2>
+    <p><strong>River Song Management LLC</strong> provides property maintenance services only.</p>
+    <p><strong>Nomad</strong> is the licensed property management company responsible for leasing, rent collection, tenant placement, and compliance.</p>
+  </div>
+</section>
 
-<div class="card">
-<h2>Properties Serviced</h2>
-<ul>
-<li>511 Caddis Creek Rd, Irmo, SC</li>
-<li>1604 Hollingshed Rd, Irmo, SC</li>
-</ul>
-</div>
+<section id="maintenance">
+  <div class="card">
+    <h2>Maintenance Request</h2>
+    <p>For maintenance issues only. Leasing or rent questions must be directed to Nomad.</p>
 
-<div class="card">
-<h2>Submit a Maintenance Request</h2>
-<form action="mailto:riversongmanagement@gmail.com" method="post" enctype="text/plain">
-<label>Name</label>
-<input type="text" name="Name" required>
+    <form action="mailto:riversongmanagement@gmail.com" method="post" enctype="text/plain">
+      <label>Name</label>
+      <input name="Name" required>
 
-<label>Property Address</label>
-<input type="text" name="Property" required>
+      <label>Property Address</label>
+      <input name="Property" required>
 
-<label>Issue Description</label>
-<textarea name="Issue" required></textarea>
+      <label>Description of Issue</label>
+      <textarea name="Issue" rows="5" required></textarea>
 
-<button type="submit">Submit Request</button>
-</form>
-<p class="note">Leasing or rent questions must be directed to Nomad.</p>
-</div>
+      <button type="submit">Submit Request</button>
+    </form>
+  </div>
+</section>
 
-<div class="card">
-<h2>Local Weather – Irmo, SC</h2>
-<iframe src="https://forecast7.com/en/34d09n81d18/irmo/?unit=us"></iframe>
-</div>
+<section id="properties">
+  <div class="card">
+    <h2>Properties Serviced</h2>
+    <div class="grid">
+      <div>
+        <h3>511 Caddis Creek Rd</h3>
+        <iframe src="https://www.google.com/maps?q=511+Caddis+Creek+Rd+Irmo+SC&output=embed"></iframe>
+      </div>
+      <div>
+        <h3>1604 Hollingshed Rd</h3>
+        <iframe src="https://www.google.com/maps?q=1604+Hollingshed+Rd+Irmo+SC&output=embed"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
 
-<div class="card">
-<h2>Property Locations</h2>
-<iframe src="https://www.google.com/maps?q=511+Caddis+Creek+Rd+Irmo+SC&output=embed"></iframe>
-<br><br>
-<iframe src="https://www.google.com/maps?q=1604+Hollingshed+Rd+Irmo+SC&output=embed"></iframe>
-</div>
+<section id="weather">
+  <div class="card">
+    <h2>Live Local Weather – Irmo, SC</h2>
+    <iframe src="https://forecast.weather.gov/MapClick.php?lat=34.086&lon=-81.183&FcstType=graphical"></iframe>
+    <p style="font-size:.85rem;color:#555;margin-top:10px">
+      Powered by the National Weather Service (NOAA)
+    </p>
+  </div>
+</section>
 
-<div class="card">
-<h2>Contact</h2>
-<p>Email: <strong>riversongmanagement@gmail.com</strong></p>
-<p>Phone: <strong>(803) 814-5061</strong></p>
-</div>
+<section id="support">
+  <div class="card">
+    <h2>Support</h2>
+    <p>Live chat is available in the lower-right corner.</p>
+    <p>Urgent maintenance issues: <strong>(803) 814-5061</strong></p>
+  </div>
+</section>
 
-<div class="card">
-<h2>Property Management</h2>
-<p>For leasing, rent, or tenant matters:</p>
-<a href="https://www.nomadlease.com" target="_blank">https://www.nomadlease.com</a>
-</div>
-
-</div>
+<section id="contact">
+  <div class="card">
+    <h2>Contact</h2>
+    <p>Email: <strong>riversongmanagement@gmail.com</strong></p>
+    <p>Phone: <strong>(803) 814-5061</strong></p>
+    <p>Property Management: <a href="https://www.nomadlease.com" target="_blank">Nomad</a></p>
+  </div>
+</section>
 
 <footer>
-© River Song Management LLC — Maintenance Services Only
+© River Song Management LLC — Property Maintenance Services Only
 </footer>
 
 <!-- FREE LIVE CHAT -->
-<script>
-(function(){
-  var chat=document.createElement("script");
-  chat.src="https://embed.tawk.to/64f8e2d4b2d3b12b5b8d78f1/1h9jv9m5n";
-  chat.async=true;
-  document.body.appendChild(chat);
-})();
-</script>
+<script src="https://embed.tawk.to/64f8e2d4b2d3b12b5b8d78f1/1h9jv9m5n" async></script>
 
 </body>
 </html>
